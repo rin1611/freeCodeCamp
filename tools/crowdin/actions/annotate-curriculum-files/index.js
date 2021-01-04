@@ -8,7 +8,7 @@ const {
 const ignoredFilesRE = /(part-\d\d\d\.md$)|(^\d\d-certificates)/i;
 const challengeDir = path.join(
   __dirname,
-  '/../../../../curriculum/challenges/english'
+  '/../../../../curriculum/challenges/english/01-responsive-web-design'
 );
 
 const annotateCurriculumFiles = async file => {

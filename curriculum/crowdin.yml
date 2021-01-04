@@ -7,7 +7,7 @@
 
 files: [
  {
-  "source" : "/curriculum/challenges/english/01-responsive-web-design/**/*.md",
+  "source" : "/curriculum/challenges/english/01-responsive-web-design/applied-accessibility/**/*.md",
   "translation" : "/curriculum/challenges/%language%/**/%original_file_name%",
 # The following should work, but ends up keeping the orginal language instead
 # For now, just use the language mapping feature for the project since it

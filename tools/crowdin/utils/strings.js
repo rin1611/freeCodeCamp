@@ -42,8 +42,7 @@ const changeHiddenStatus = async (projectId, stringId, newStatus) => {
   await updateString({
     projectId,
     stringId,
-    // propsToUpdate: [{ path: '/isHidden', value: newStatus }]
-    propsToUpdate: []
+    propsToUpdate: [{ path: '/isHidden', value: newStatus }]
   });
 };
 

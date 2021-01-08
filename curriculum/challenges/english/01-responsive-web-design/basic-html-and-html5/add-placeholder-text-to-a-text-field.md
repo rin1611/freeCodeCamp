@@ -8,7 +8,7 @@ forumTopicId: 16647
 
 # --description--
 
-Placeholder text is what is displayed in your `input` element before your user has inputted anything.
+Placeholder text is what is displayed in your `input` element before your user has inputted anything. New text.
 
 You can create placeholder text like so:
 

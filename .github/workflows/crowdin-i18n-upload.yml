@@ -1,9 +1,10 @@
-name: Crowdin i18n Upload Action
+name: Crowdin i18n Upload Action without Annotation
 on:
   workflow_dispatch:
   push:
     branches:
       - crowdin-source
+      - feat/crowdin-and-upload-integration-without-annotation-of-files
 
 jobs:
   
@@ -18,24 +19,16 @@ jobs:
       - name: Install Dependencies
         working-directory: ./tools
         run: |
-          cd ./formatter
+          cd ./crowdin
           npm ci
-          cd ../challenge-md-parser
-          npm ci
-          cd ../challenge-md-parser/mdx
-          npm ci
-          cd ../../crowdin
-          npm ci
-
-      - name: Annotate Curriculum Files
-        uses: ./tools/crowdin/actions/annotate-curriculum-files
 
       - name: Crowdin Upload
         uses: crowdin/github-action@master
         # options: https://github.com/crowdin/github-action/blob/master/action.yml
         with:
           # uploads
-          upload_translations: false
+          upload_sources: true
+          upload_translations: true
           auto_approve_imported: false
           import_eq_suggestions: false
 

@@ -1,13 +1,14 @@
 const authHeader = require('./auth-header');
 const makeRequest = require('./make-request');
-const delay = require('./delay');
+
+const isHeading = str => /\h\d/.test(str);
+const isCode = str => /^\/pre\/code|\/code$/.test(str);
 
 const shouldHide = (text, context, challengeTitle) => {
-  // assuming notranslate is true if context has the XPath type of notranslate
-  if (context.includes('/notranslate')) return true;
-  if (text !== challengeTitle && context.includes('id=front-matter'))
+  if (isHeading(context) || isCode(context)) {
     return true;
-  return false;
+  }
+  return text !== challengeTitle && context.includes('id=front-matter');
 };
 
 const getStrings = async ({ projectId, fileId }) => {
@@ -45,7 +46,6 @@ const changeHiddenStatus = async (projectId, stringId, newStatus) => {
     stringId,
     propsToUpdate: [{ path: '/isHidden', value: newStatus }]
   });
-  await delay(200);
 };
 
 const updateFileStrings = async ({ projectId, fileId, challengeTitle }) => {

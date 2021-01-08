@@ -4,7 +4,6 @@ const path = require('path');
 const matter = require('gray-matter');
 const { getFiles } = require('../../utils/files');
 const { updateFileStrings } = require('../../utils/strings');
-// const delay = require('./utils/delay');
 
 const hideNonTranslatedStrings = async projectId => {
   console.log('start hiding non-translated strings...');

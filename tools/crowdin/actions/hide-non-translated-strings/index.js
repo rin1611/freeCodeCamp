@@ -1,4 +1,5 @@
 require('dotenv').config({ path: `${__dirname}/../../.env` });
+// const core = require('@actions/core');
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
@@ -15,11 +16,16 @@ const hideNonTranslatedStrings = async projectId => {
         '/../../../../',
         crowdinFilePath
       );
-      const challengeContent = fs.readFileSync(challengeFilePath);
-      const {
-        data: { title: challengeTitle }
-      } = matter(challengeContent);
-      await updateFileStrings({ projectId, fileId, challengeTitle });
+      try {
+        const challengeContent = fs.readFileSync(challengeFilePath);
+        const {
+          data: { title: challengeTitle }
+        } = matter(challengeContent);
+        await updateFileStrings({ projectId, fileId, challengeTitle });
+      } catch (err) {
+        console.log(err.name);
+        console.log(err.message);
+      }
     }
   }
   console.log('hiding non-translated strings complete');
